@@ -11000,6 +11000,7 @@ runFunction(function()
 end)
 
 runFunction(function()
+        local fartlol = {Enabled = False}
 	fartlol = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
 		Name = "ScytheTingy",
 		Function = function(callback)
