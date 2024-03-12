@@ -1,3 +1,16 @@
+
+--[[
+
+    SP+ Unpatched | Bedwars
+    The #1 vape mod, made by Copium.
+
+    Version: 1.0
+
+    Join for Best Script:
+    discord.gg/render
+
+]]
+
 local GuiLibrary = shared.GuiLibrary
 local playersService = game:GetService("Players")
 local textService = game:GetService("TextService")
