@@ -11057,9 +11057,8 @@ end)
 
 runFunction(function()
 	local transformed = false
-	local TexturePacks = {["Enabled"] = false}
+	local TexturePack = {["Enabled"] = false}
 	local packselected = {["Value"] = "OldBedwars"}
-
 	local packfunctions = {
 		SeventhPack = function() 
 			task.spawn(function()
@@ -11115,7 +11114,7 @@ runFunction(function()
 			task.spawn(function()
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/Glizzy"))()   
 			end)
-        end,
+                end,
 		PrivatePack = function() 
 			task.spawn(function()
 				local Players = game:GetService("Players")
@@ -11304,7 +11303,7 @@ runFunction(function()
 					end
 				end)            
 			end)
-        end,
+                end,
 		DemonSlayerPack = function() 
 			task.spawn(function()
 				local Players = game:GetService("Players")
@@ -11491,13 +11490,13 @@ runFunction(function()
 				end)
 			end)
 		end,
-        FirstHighResPack = function() 
-            task.spawn(function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/512xPack"))()   
-           end)
+                FirstHighResPack = function() 
+                        task.spawn(function()
+                                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/512xPack"))()   
+                        end)
 		end,
-        RandomPack = function() 
-            task.spawn(function()  
+                RandomPack = function() 
+                        task.spawn(function()  
 				local Players = game:GetService("Players")
 				local ReplicatedStorage = game:GetService("ReplicatedStorage")
 				local Workspace = game:GetService("Workspace")
@@ -11565,35 +11564,32 @@ runFunction(function()
 						end
 					end
 				end)   
-           end)
+                        end)
 		end,
 		SecondHighResPack = function() 
-            task.spawn(function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/1024xPack"))()   
-           end)
-		end
+                        task.spawn(function()
+                                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/1024xPack"))()   
+                        end)
+		end																																						
 	}
-
-	TexturePacks = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-		["Name"] = "TexturePacks",
-		["Function"] = function(callback) 
-			if callback then 
-				if not transformed then
-					transformed = true
-					packfunctions[packselected["Value"]]()
-				end
-            else 
-                if TexturePacks.Enabled == false then
-                    task.wait()
-                    func:disconnect()
+        TexturePack = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+                ["Name"] = "TexturePack",
+                ["Function"] = function(callback) 
+                        if callback then 
+                                if not transformed then
+                                        transformed = true
+                                        packfunctions[packselected["Value"]]()
+                                end
+                        else
+                                warningNotification("TexturePacks", "Disabled Next Game", 10)
+                        end
+                end,
+                ["ExtraText"] = function()
+                        return packselected["Value"]
                 end
-			end
-		end,
-		["ExtraText"] = function()
-			return packselected["Value"]
-		end
-	})
-	packselected = TexturePacks.CreateDropdown({
+        })
+
+	packselected = TexturePack.CreateDropdown({
 		["Name"] = "Pack",
 		["Function"] = function() end,
 		["List"] = {"GlizzyPack", 
@@ -11603,10 +11599,11 @@ runFunction(function()
 		"SeventhPack","EighthPack", 
 		"EgirlPack", "CottonCandy", 
 		"Pack512x", "Pack1056x",
-	    "PrivatePack", "DemonSlayerPack",
-	    "RandomPack"}
+	        "PrivatePack", "DemonSlayerPack",
+	        "RandomPack"}
 	})
 end)
+
 runFunction(function()
 	local transformed = false
 	local GameThemeV2 = {["Enabled"] = false}
