@@ -11777,7 +11777,9 @@ runFunction(function()
 	    "Infinite"}
 	})
 end)
+
 runFunction(function()
+    local AntiBan = {Enabled = False}
     AntiBan = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
         Name = "AntiBan",
         Function = function(callback)
@@ -11802,12 +11804,14 @@ runFunction(function()
         end
     })
 end)
+
 runFunction(function()
-	CustomModule = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+        local x = {Enabled = False}
+	x = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
 		Name = "CustomHealthBar",
 		Function = function(callback)
 			if callback then 
-				spawn(function()
+				task.spawn(function() 
 					pcall(function()
 						local tweenservice = game:GetService("TweenService")
 						local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
@@ -11841,10 +11845,11 @@ runFunction(function()
 							local tween = tweenservice:Create(healthbar, TweenInfo.new(speed), {BackgroundColor3 = color})
 							tween:Play()
 							wait(speed)
-						until not CustomModule.Enabled
+						until not x.Enabled
 					end) 
 				end)
 			end
 		end
 	})
 end)
+
