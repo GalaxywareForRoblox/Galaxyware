@@ -10991,15 +10991,15 @@ runFunction(function()
                 local Players = game:GetService("Players")
                 local ReplicatedStorage = game:GetService("ReplicatedStorage")
                 local Workspace = game:GetService("Workspace")
-                
-                -- Use pcall to catch potential errors when fetching objects
+                print("Fetching objects...")
                 local success, objs = pcall(function()
                     return game:GetObjects("rbxassetid://14347599212")
                 end)
                 
                 if success then
-                    -- Check if objs is an array of objects
+                    print("Objects fetched successfully")
                     if type(objs) == "table" and #objs > 0 then
+                        print("Objects count:", #objs)
                         local import = objs[1]
                         import.Parent = ReplicatedStorage
                         
