@@ -1,3 +1,19 @@
+--[[
+
+    Infinity | Bedwars                                          
+    Unpatched config for Bedwars made by Snoopy Configs
+
+    Features:
+         + Infinity Config
+
+    Soon:
+         + Beta Testing
+
+    Version: 1.0
+    discord.gg/render
+
+]]
+
 local GuiLibrary = shared.GuiLibrary
 local playersService = game:GetService("Players")
 local textService = game:GetService("TextService")
