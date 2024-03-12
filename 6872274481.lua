@@ -10599,13 +10599,16 @@ end
 
 local function fadeColors(color1, color2, duration)
     local startTime = tick()
-    while true do
-        local elapsedTime = tick() - startTime
-        local t = math.abs(math.sin(elapsedTime / duration))
-        highlight2.FillColor = lerpColor(color1, color2, t)
-        wait()
-    end
+    task.spawn(function()
+        repeat
+            local elapsedTime = tick() - startTime
+            local t = math.abs(math.sin(elapsedTime / duration))
+            highlight2.FillColor = lerpColor(color1, color2, t)
+            wait()
+        until tick() >= startTime + duration
+    end)
 end
+
 runFunction(function()
     EnchantedSwordEffect = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
         Name = "EnchantedSwordEffect",
@@ -10941,6 +10944,7 @@ runFunction(function()
 end)
 
 runFunction(function()
+    local disabler = {Enabled = False}
     disabler = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
         Name = "ScytheDisabler",
         Function = function(callback)
