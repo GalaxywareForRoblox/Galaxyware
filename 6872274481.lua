@@ -11000,7 +11000,6 @@ runFunction(function()
 end)
 
 runFunction(function()
-        local fartlol = {Enabled = False}
 	fartlol = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
 		Name = "ScytheTingy",
 		Function = function(callback)
@@ -11010,8 +11009,8 @@ runFunction(function()
 				local Workspace = game:GetService("Workspace")
 				local objs = game:GetObjects("rbxassetid://14347599212")
                                 local import = objs[1]
-                                import.Parent = game:GetService("ReplicatedStorage")
-				index = {
+                                import.Parent = ReplicatedStorage
+				local index = {
 					{
 						name = "wood_scythe",
 						offset = CFrame.Angles(math.rad(0),math.rad(89),math.rad(-90)),
