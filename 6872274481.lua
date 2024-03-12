@@ -10957,7 +10957,6 @@ runFunction(function()
 end)
 
 runFunction(function()
-    local disabler = {Enabled = False}
     disabler = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
         Name = "ScytheDisabler",
         Function = function(callback)
@@ -10998,6 +10997,78 @@ runFunction(function()
             end
         end
     })
+end)
+
+runFunction(function()
+	fartlol = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+		Name = "ScytheTingy",
+		Function = function(callback)
+			if callback then 
+				local Players = game:GetService("Players")
+				local ReplicatedStorage = game:GetService("ReplicatedStorage")
+				local Workspace = game:GetService("Workspace")
+				local objs = game:GetObjects("rbxassetid://14347599212")
+				local import = objs[1]
+				import.Parent = ReplicatedStorage
+				index = {
+					{
+						name = "wood_scythe",
+						offset = CFrame.Angles(math.rad(0),math.rad(89),math.rad(-90)),
+						model = import:WaitForChild("Wood_Scythe"),
+					},
+					{
+						name = "stone_scythe",
+						offset = CFrame.Angles(math.rad(0),math.rad(89),math.rad(-90)),
+						model = import:WaitForChild("Stone_Scythe"),
+					},
+					{
+						name = "iron_scythe",
+						offset = CFrame.Angles(math.rad(0),math.rad(89),math.rad(-90)),
+						model = import:WaitForChild("Iron_Scythe"),
+					},
+					{
+						name = "diamond_scythe",
+						offset = CFrame.Angles(math.rad(0),math.rad(89),math.rad(-90)),
+						model = import:WaitForChild("Diamond_Scythe"),
+					},
+				}
+				local func = Workspace:WaitForChild("Camera").Viewmodel.ChildAdded:Connect(function(tool)
+					if(not tool:IsA("Accessory")) then return end
+					for i,v in pairs(index) do
+						if(v.name == tool.Name) then
+							for i,v in pairs(tool:GetDescendants()) do
+								if(v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation")) then
+									v.Transparency = 1
+								end
+							end
+							local model = v.model:Clone()
+							model.CFrame = tool:WaitForChild("Handle").CFrame * v.offset
+							model.CFrame *= CFrame.Angles(math.rad(0),math.rad(-50),math.rad(0))
+							model.Parent = tool
+							local weld = Instance.new("WeldConstraint",model)
+							weld.Part0 = model
+							weld.Part1 = tool:WaitForChild("Handle")
+							local tool2 = Players.LocalPlayer.Character:WaitForChild(tool.Name)
+							for i,v in pairs(tool2:GetDescendants()) do
+								if(v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation")) then
+									v.Transparency = 1
+								end            
+							end            
+							local model2 = v.model:Clone()
+							model2.Anchored = false
+							model2.CFrame = tool2:WaitForChild("Handle").CFrame * v.offset
+							model2.CFrame *= CFrame.Angles(math.rad(0),math.rad(-50),math.rad(0))
+							model2.CFrame *= CFrame.new(-.7,0,-1)
+							model2.Parent = tool2
+							local weld2 = Instance.new("WeldConstraint",model)
+							weld2.Part0 = model2
+							weld2.Part1 = tool2:WaitForChild("Handle")
+						end
+					end
+				end)
+			end
+		end
+	})
 end)
 
 runFunction(function()
@@ -11730,7 +11801,6 @@ runFunction(function()
 end)
 
 runFunction(function()
-    local AntiBan = {Enabled = False}
     AntiBan = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
         Name = "AntiBan",
         Function = function(callback)
@@ -11755,14 +11825,12 @@ runFunction(function()
         end
     })
 end)
-
 runFunction(function()
-        local x = {Enabled = False}
-	x = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+	CustomModule = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
 		Name = "CustomHealthBar",
 		Function = function(callback)
 			if callback then 
-				task.spawn(function() 
+				spawn(function()
 					pcall(function()
 						local tweenservice = game:GetService("TweenService")
 						local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
@@ -11796,7 +11864,7 @@ runFunction(function()
 							local tween = tweenservice:Create(healthbar, TweenInfo.new(speed), {BackgroundColor3 = color})
 							tween:Play()
 							wait(speed)
-						until not x.Enabled
+						until not CustomModule.Enabled
 					end) 
 				end)
 			end
