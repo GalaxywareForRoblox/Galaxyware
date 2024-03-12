@@ -11008,8 +11008,8 @@ runFunction(function()
 				local ReplicatedStorage = game:GetService("ReplicatedStorage")
 				local Workspace = game:GetService("Workspace")
 				local objs = game:GetObjects("rbxassetid://14347599212")
-				local import = objs[1]
-				import.Parent = ReplicatedStorage
+                                local import = objs[1]
+                                import.Parent = game:GetService("ReplicatedStorage")
 				index = {
 					{
 						name = "wood_scythe",
