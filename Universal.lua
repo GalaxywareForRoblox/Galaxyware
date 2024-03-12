@@ -5902,22 +5902,3 @@ runFunction(function()
 	createKeystroke(Enum.KeyCode.Space, UDim2.new(0, 0, 0, 83), UDim2.new(0, 25, 0, -10))
 end)
 
-runFunction(function()
-    local KeyBindReminder = {Enabled = false}
-    KeyBindReminder = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-        Name = "Keybinds",
-        Function = function(callback)
-            if callback then
-                task.spawn(function()
-                    repeat
-                        warningNotification("Copium", "The Keybind for Infinity is: V", 60)
-                        wait(60)
-                        warningNotification("Copium", "Thank you for using Infinity", 30)
-                        wait(30)
-                    until not KeyBindReminder.Enabled
-                end)()
-            end
-        end
-    })
-end)
-
