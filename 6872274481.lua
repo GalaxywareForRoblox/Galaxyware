@@ -1,16 +1,3 @@
-
---[[
-
-    SP+ Unpatched | Bedwars
-    The #1 vape mod, made by Copium.
-
-    Version: 1.0
-
-    Join for Best Script:
-    discord.gg/render
-
-]]
-
 local GuiLibrary = shared.GuiLibrary
 local playersService = game:GetService("Players")
 local textService = game:GetService("TextService")
@@ -10612,16 +10599,13 @@ end
 
 local function fadeColors(color1, color2, duration)
     local startTime = tick()
-    task.spawn(function()
-        repeat
-            local elapsedTime = tick() - startTime
-            local t = math.abs(math.sin(elapsedTime / duration))
-            highlight2.FillColor = lerpColor(color1, color2, t)
-            wait()
-        until tick() >= startTime + duration
-    end)
+    while true do
+        local elapsedTime = tick() - startTime
+        local t = math.abs(math.sin(elapsedTime / duration))
+        highlight2.FillColor = lerpColor(color1, color2, t)
+        wait()
+    end
 end
-
 runFunction(function()
     EnchantedSwordEffect = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
         Name = "EnchantedSwordEffect",
@@ -11008,8 +10992,8 @@ runFunction(function()
 				local ReplicatedStorage = game:GetService("ReplicatedStorage")
 				local Workspace = game:GetService("Workspace")
 				local objs = game:GetObjects("rbxassetid://14347599212")
-                                local import = objs[1]
-                                import.Parent = ReplicatedStorage
+				local import = objs[1]
+				import.Parent = game:GetService("ReplicatedStorage")
 				local index = {
 					{
 						name = "wood_scythe",
@@ -11073,8 +11057,9 @@ end)
 
 runFunction(function()
 	local transformed = false
-	local TexturePack = {["Enabled"] = false}
+	local TexturePacks = {["Enabled"] = false}
 	local packselected = {["Value"] = "OldBedwars"}
+
 	local packfunctions = {
 		SeventhPack = function() 
 			task.spawn(function()
@@ -11130,7 +11115,7 @@ runFunction(function()
 			task.spawn(function()
 				loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/Glizzy"))()   
 			end)
-                end,
+        end,
 		PrivatePack = function() 
 			task.spawn(function()
 				local Players = game:GetService("Players")
@@ -11319,7 +11304,7 @@ runFunction(function()
 					end
 				end)            
 			end)
-                end,             																																																																																																																														
+        end,
 		DemonSlayerPack = function() 
 			task.spawn(function()
 				local Players = game:GetService("Players")
@@ -11506,13 +11491,13 @@ runFunction(function()
 				end)
 			end)
 		end,
-                FirstHighResPack = function() 
-                        task.spawn(function()
-                                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/512xPack"))()   
-                        end)
+        FirstHighResPack = function() 
+            task.spawn(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/512xPack"))()   
+           end)
 		end,
-                RandomPack = function() 
-                        task.spawn(function()  
+        RandomPack = function() 
+            task.spawn(function()  
 				local Players = game:GetService("Players")
 				local ReplicatedStorage = game:GetService("ReplicatedStorage")
 				local Workspace = game:GetService("Workspace")
@@ -11580,32 +11565,35 @@ runFunction(function()
 						end
 					end
 				end)   
-                        end)
+           end)
 		end,
 		SecondHighResPack = function() 
-                        task.spawn(function()
-                                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/1024xPack"))()   
-                        end)
-		end																																						
+            task.spawn(function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/SnoopyOwner/TexturePacks/main/1024xPack"))()   
+           end)
+		end
 	}
-        TexturePack = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
-                ["Name"] = "TexturePack",
-                ["Function"] = function(callback) 
-                        if callback then 
-                                if not transformed then
-                                        transformed = true
-                                        packfunctions[packselected["Value"]]()
-                                end
-                        else
-                                warningNotification("TexturePacks", "Disabled Next Game", 10)
-                        end
-                end,
-                ["ExtraText"] = function()
-                        return packselected["Value"]
-                end
-        })
 
-	packselected = TexturePack.CreateDropdown({
+	TexturePacks = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
+		["Name"] = "TexturePacks",
+		["Function"] = function(callback) 
+			if callback then 
+				if not transformed then
+					transformed = true
+					packfunctions[packselected["Value"]]()
+				end
+            else 
+                if TexturePacks.Enabled == false then
+                    task.wait()
+                    func:disconnect()
+                end
+			end
+		end,
+		["ExtraText"] = function()
+			return packselected["Value"]
+		end
+	})
+	packselected = TexturePacks.CreateDropdown({
 		["Name"] = "Pack",
 		["Function"] = function() end,
 		["List"] = {"GlizzyPack", 
@@ -11615,11 +11603,10 @@ runFunction(function()
 		"SeventhPack","EighthPack", 
 		"EgirlPack", "CottonCandy", 
 		"Pack512x", "Pack1056x",
-	        "PrivatePack", "DemonSlayerPack",
-	        "RandomPack"}
+	    "PrivatePack", "DemonSlayerPack",
+	    "RandomPack"}
 	})
 end)
-
 runFunction(function()
 	local transformed = false
 	local GameThemeV2 = {["Enabled"] = false}
@@ -11799,7 +11786,6 @@ runFunction(function()
 	    "Infinite"}
 	})
 end)
-
 runFunction(function()
     AntiBan = GuiLibrary.ObjectsThatCanBeSaved.RenderWindow.Api.CreateOptionsButton({
         Name = "AntiBan",
@@ -11871,4 +11857,3 @@ runFunction(function()
 		end
 	})
 end)
-
