@@ -2475,11 +2475,11 @@ runFunction(function()
 	})
 	autoclickercps = autoclicker.CreateTwoSlider({
 		Name = "CPS",
-		Min = 1,
-		Max = 20,
+		Min = 150,
+		Max = 999,
 		Function = function(val) end,
-		Default = 8,
-		Default2 = 12
+		Default = 150,
+		Default2 = 999
 	})
 	autoclickertimed = autoclicker.CreateToggle({
 		Name = "Timed",
@@ -3060,22 +3060,22 @@ runFunction(function()
 		end,
 		HoverText = "Makes you go zoom (longer Fly discovered by exelys and Cqded)",
 		ExtraText = function() 
-			return "Heatseeker"
+			return "Galaxyware"
 		end
 	})
 	FlySpeed = Fly.CreateSlider({
 		Name = "Speed",
 		Min = 1,
-		Max = 23,
+		Max = 26,
 		Function = function(val) end, 
-		Default = 23
+		Default = 26
 	})
 	FlyVerticalSpeed = Fly.CreateSlider({
 		Name = "Vertical Speed",
 		Min = 1,
 		Max = 100,
 		Function = function(val) end, 
-		Default = 44
+		Default = 111
 	})
 	FlyVertical = Fly.CreateToggle({
 		Name = "Y Level",
@@ -3484,22 +3484,22 @@ runFunction(function()
 		end,
 		HoverText = "Makes you go zoom",
 		ExtraText = function()
-			return "Heatseeker"
+			return "Galaxyware"
 		end
 	})
 	InfiniteFlySpeed = InfiniteFly.CreateSlider({
 		Name = "Speed",
 		Min = 1,
-		Max = 23,
+		Max = 26,
 		Function = function(val) end, 
-		Default = 23
+		Default = 26
 	})
 	InfiniteFlyVerticalSpeed = InfiniteFly.CreateSlider({
 		Name = "Vertical Speed",
 		Min = 1,
 		Max = 100,
 		Function = function(val) end, 
-		Default = 44
+		Default = 111
 	})
 	InfiniteFlyVertical = InfiniteFly.CreateToggle({
 		Name = "Y Level",
@@ -3623,7 +3623,7 @@ runFunction(function()
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.1},
 			{CFrame = CFrame.new(0.7, -0.71, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.2}
 		},
-		["CustomSP+"] = {
+		["Custom"] = {
 			{CFrame = CFrame.new(0.39, 1, 0.2) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.13},
 			{CFrame = CFrame.new(0.39, 1, 0.2) * CFrame.Angles(math.rad(-30), math.rad(50), math.rad(-90)), Time = 0.03},
 			{CFrame = CFrame.new(0.7, 0.1, 0.59) * CFrame.Angles(math.rad(-84), math.rad(50), math.rad(-38)), Time = 0.09},
@@ -3635,7 +3635,7 @@ runFunction(function()
 			{CFrame = CFrame.new(0.7, -0.7, 0.6) * CFrame.Angles(math.rad(-16), math.rad(60), math.rad(-80)), Time = 0.15},
 			{CFrame = CFrame.new(0.95, -1.06, -2.25) * CFrame.Angles(math.rad(-179), math.rad(61), math.rad(80)), Time = 0.15}
 		},
-		NewCatV5 = {
+		Newest = {
 			{CFrame = CFrame.new(0.69, -0.7, 0.6) * CFrame.Angles(math.rad(-65), math.rad(55), math.rad(-70)), Time = 0.1},
 			{CFrame = CFrame.new(0.69, -0.71, 0.6) * CFrame.Angles(math.rad(-160), math.rad(60), math.rad(1)), Time = 0.1},
 			{CFrame = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(-0), math.rad(0), math.rad(-0)), Time = -0.2},
@@ -3970,13 +3970,13 @@ runFunction(function()
     killaurarange = Killaura.CreateSlider({
         Name = "Attack range",
         Min = 1,
-        Max = 18,
+        Max = 30,
         Function = function(val) 
 			if killaurarangecirclepart then 
 				killaurarangecirclepart.Size = Vector3.new(val * 0.7, 0.01, val * 0.7)
 			end
 		end, 
-        Default = 18
+        Default = 30
     })
     killauraangle = Killaura.CreateSlider({
         Name = "Max angle",
@@ -5000,22 +5000,22 @@ runFunction(function()
 		end, 
 		HoverText = "Increases your movement.",
 		ExtraText = function() 
-			return "Heatseeker"
+			return "Nebulaware"
 		end
 	})
 	SpeedValue = Speed.CreateSlider({
 		Name = "Speed",
 		Min = 1,
-		Max = 23,
+		Max = 26,
 		Function = function(val) end,
-		Default = 23
+		Default = 26
 	})
 	SpeedValueLarge = Speed.CreateSlider({
 		Name = "Big Mode Speed",
 		Min = 1,
-		Max = 23,
+		Max = 26,
 		Function = function(val) end,
-		Default = 23
+		Default = 26
 	})
 	SpeedDamageBoost = Speed.CreateToggle({
 		Name = "Damage Boost",
@@ -10522,4 +10522,20 @@ runFunction(function()
 		end
 	end)         
 end)
-						
+	runFunction(function()
+    local hello = {}
+    local j = {'emerald_1', 'emerald_2', 'emerald_3', 'emerald_4', 'emerald_0', 'diamond_0', 'diamond_1', 'diamond_2', 'diamond_3', 'diamond_4', '1_generator'}
+    hello = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
+        Name = 'Instant Tool',
+        Hovertext = 'use in infected, ez tools made by maxlazertech',
+        Function = function(callback)
+            if callback then
+                repeat task.wait()
+                    for i,v in pairs(j) do
+                        bedwars.ClientHandler:Get('OreGeneratorDisruptionStatusUpdate'):SendToServer({generatorId = v, isDisrupted = true})
+                    end
+                until (not hello.Enabled)
+            end
+        end
+    })
+end)						
