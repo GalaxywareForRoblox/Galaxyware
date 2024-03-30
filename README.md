@@ -1,9 +1,6 @@
-# Infinity Copium
-Infinity - The Legacy of SP+, made by Snoopy Configs
-## a Configuration AND a collection of all render configs Of Vape V4
+# Galaxyware
+Galaxyware - The Legacy of Nebulaware, made by nebula
+## going to be better than render and Godpastersploit
 
-```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Copiums/Copium/main/Installer.lua", true))()
-```
 
-### Render Server: https://discord.gg/render
+### you aint gonna find gold heee
